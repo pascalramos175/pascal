@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pascal</title>
+  <style>
+    /* Variáveis de cores */
+    :root {
+      --laranja: #3b3835;
+      --preto: #1e1e1e;
+      --branco: #fff;
+      --cinza: #333;
+      --destaque: #3f3832;
+      --transparente: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Corpo */
+    body {
+      background-color: var(--preto);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--branco);
+    }
+
+    /* Cabeçalho */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--laranja);
+      color: var(--branco);
+      z-index: 1000;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    header:hover {
+      background-color: var(--destaque);
+    }
+
+    header .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: var(--branco);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    header nav a:hover {
+      color: var(--cinza);
+    }
+
+    .login-btn {
+      background-color: var(--branco);
+      color: var(--laranja);
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: var(--destaque);
+      color: var(--branco);
+    }
+
+    /* Carrossel */
+    .carrossel {
+      position: relative;
+      overflow: hidden;
+      height: 600px;
+      margin-top: 80px;
+    }
+
+    .carrossel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carrossel .descricao {
+      position: absolute;
+      bottom: 50px;
+      left: 30px;
+      background-color: var(--transparente);
+      color: var(--branco);
+      padding: 20px;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .carrossel .descricao h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .carrossel .descricao p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .carrossel .descricao button {
+      padding: 12px 20px;
+      background-color: var(--destaque);
+      color: var(--branco);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Seções */
+    .secao {
+      padding: 50px 30px;
+    }
+
+    .secao h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .secao .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .secao .card {
+      position: relative;
+      background-color: var(--cinza);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .secao .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .secao .card .info {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: var(--branco);
+      font-size: 16px;
+      font-weight: bold;
+      background-color: var(--transparente);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .secao .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .carrossel .descricao {
+        max-width: 100%;
+      }
+
+      .secao .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+        /* Definindo as cores padrão */
+        :root {
+            --fundo: #111;
+            --branco: #fff;
+            --destaque: #ff6600;
+            --sombracard: rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--fundo);
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Seção de Cards */
+        .secao {
+            margin: 50px;
+        }
+
+        .secao h2 {
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card img {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Elementos dentro do card */
+        .info-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--branco);
+            opacity: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover .info-overlay {
+            opacity: 1;
+        }
+
+        /* Nome do anime no canto superior */
+        .anime-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Idade mínima, Temporadas, Episódios */
+        .anime-details {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Descrição centralizada */
+        .anime-description {
+            font-size: 1rem;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        /* Exemplo de grid de categorias */
+        .grid .card img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Botões */
+        .explorar-btn {
+            background-color: var(--destaque);
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .explorar-btn:hover {
+            background-color: #e65c00;
+        }
+      /* Efeitos de hover */
+      .secao .card:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      /* Animação para o Banner de Promoção */
+      .promo-banner {
+        background: url('https://static.crunchyroll.com/fms/landscape_large/c189b9c7-e23a-4f72-98d0-0a99f1316d67.jpg') no-repeat center center;
+        background-size: cover;
+        padding: 50px 0;
+        text-align: center;
+        color: var(--branco);
+      }
+
+      .promo-banner .banner-conteudo {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        display: inline-block;
+        border-radius: 8px;
+      }
+
+      .promo-banner button {
+        background-color: var(--destaque);
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .promo-banner button:hover {
+        background-color: #e65c00;
+      }
+
+      /* Rodapé */
+      footer {
+        background-color: #111;
+        color: #888;
+        padding: 30px 0;
+        text-align: center;
+      }
+
+      footer .footer-content p {
+        margin-bottom: 20px;
+      }
+
+      footer .footer-links a {
+        color: #ccc;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+
+      footer .footer-links a:hover {
+        color: var(--destaque);
+      }
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Pascal</div>
+    <nav>
+      <a href="#">Novidades</a>
+      <a href="#">Populares</a>
+      <a href="#">Videos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Livros</a>
+      <a href="#">Animes</a>
+    </nav>
+    
+  </header>
+
+  <div class="carrossel">
+    <img src="blob:https://web.whatsapp.com/b333138f-d6a9-4f88-921d-f0f7b6bb5927" alt="Banner">
+    <div class="descricao">
+      <h2>A Chama do Falso Deus</h2>
+      <p>Assista agora a incriveis episodios de idiotas se ferrando</p>
+      <a href="#"><button>Assistir Agora</button></a>
+    </div>
+    </div>
+    <section class="secao">
+      <h2>Populares Aqui</h2>
+      <div class="grid"> <!-- Container único para todos os cards -->
+        <a href="Espiritos Adormecidos/Espirito1.html" class="card"> 
+          <div>
+            <img src="https://wallpapers.com/images/hd/meme-faces-funny-pictures-wxyog2adisn7rddu.jpg" alt="Espiritos Adormecidos">
+            <div class="info-overlay">
+              <div class="anime-tittle">Espiritos Adormecidos</div>
+              <div class="anime-details">Idade 10+</div>
+              <div class="anime-details">Temporadas: 1</div>
+              <div class="Episódios">0</div>
+              <div class="anime-description">Zimbaioe</div>
+            </div>
+          </div>
+        </a>
+    
+        <div class="card">
+          <img src="https://wallpapers.com/images/hd/meme-faces-funny-pictures-7xvkefh4z0cz2nb5.jpg" alt="Realidade de Vordtt">
+          <div class="info-overlay">
+            <div class="anime-tittle">Realidade de Vordtt</div>
+            <div class="anime-details">Idade 10+</div>
+            <div class="anime-details">Temporadas: 1</div>
+            <div class="Episódios">1</div>
+            <div class="anime-description">Simba</div>
+          </div>
+        </div>
+    
+        <div class="card">
+          <img src="https://i.pinimg.com/236x/76/6b/80/766b800105935a41cd289beb4d505612.jpg" alt="Chama do Falso Deus">
+          <div class="info-overlay">
+            <div class="anime-tittle">Chama do Falso Deus</div>
+            <div class="anime-details">Idade 10+</div>
+            <div class="anime-details">Temporadas: 1</div>
+            <div class="Episódios">1</div>
+            <div class="anime-description">KARALHO 1 CM É DE</div>
+          </div>
+        </div>
+    
+          <a href="Bleach/Untitled-1.html" class="card">
+           <div>
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Bleachanime.png/250px-Bleachanime.png" alt="Bleach">
+          <div class="info-overlay">
+            <div class="anime-tittle">Bleach</div>
+            <div class="anime-details">Idade 10+</div>
+            <div class="anime-details">Temporadas: 1</div>
+            <div class="Episódios">1</div>
+            <div class="anime-description"></div>
+          </div>
+        </div>
+        </a>
+    
+      </div> 
+    </section>
+    
+    <section class="secao">
+      <h2>Explore Categorias</h2>
+      <div class="grid-categorias">
+        <div class="categoria" style="background-image: url('https://static.crunchyroll.com/fms/landscape_large/d7e71b88-c833-46e1-b68d-ff5e5f800d56.jpg');">
+          <div class="overlay">
+            <h3>Ação</h3>
+            <p>Intensos e emocionantes, animes que vão fazer seu coração bater mais rápido!</p>
+            <button class="explorar-btn">Explorar</button>
+          </div>
+        </div>
+        <div class="categoria" style="background-image: url('https://static.crunchyroll.com/fms/landscape_large/1280a02d-e1f9-4707-b6e9-c02ecb5c12c5.jpg');">
+          <div class="overlay">
+            <h3>Romance</h3>
+            <p>Histórias de amor e drama, que vão tocar o seu coração.</p>
+            <button class="explorar-btn">Explorar</button>
+          </div>
+        </div>
+        <div class="categoria" style="background-image: url('https://static.crunchyroll.com/fms/landscape_large/5851ef2b-d10d-45e0-a808-945f1a4bcf26.jpg');">
+          <div class="overlay">
+            <h3>Aventura</h3>
+            <p>Explore novos mundos, com jornadas incríveis e épicas.</p>
+            <button class="explorar-btn">Explorar</button>
+          </div>
+        </div>
+        <div class="categoria" style="background-image: url('https://static.crunchyroll.com/fms/landscape_large/f8f9b84e-e544-47bb-b1de-3e2f49fcbd68.jpg');">
+          <div class="overlay">
+            <h3>Comédia</h3>
+            <p>Animes divertidos, que vão te fazer rir sem parar.</p>
+            <button class="explorar-btn">Explorar</button>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Animações de Hover para Categorias -->
+    <style>
+      .categoria {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.4s ease, filter 0.4s ease;
+      }
+
+      .categoria:hover {
+        transform: scale(1.05);
+        filter: brightness(80%);
+      }
+
+      .categoria .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: var(--branco);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .categoria:hover .overlay {
+        opacity: 1;
+      }
+
+      .explorar-btn {
+        background-color: var(--destaque);
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .explorar-btn:hover {
+        background-color: #e65c00;
+      }
+
+      /* Carrossel Dinâmico */
+      .carrossel-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+
+      .carrossel-slide {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .carrossel-container:hover .carrossel-slide {
+        animation: slide-animation 30s linear infinite;
+      }
+
+      @keyframes slide-animation {
+        0% { transform: translateX(0); }
+        20% { transform: translateX(-100%); }
+        40% { transform: translateX(-200%); }
+        60% { transform: translateX(-300%); }
+        80% { transform: translateX(-400%); }
+        100% { transform: translateX(-500%); }
+      }
+
+      .carrossel-slide .card {
+        width: 33.33%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <!-- Footer Completo -->
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 Pascal. Todos os direitos roubados.</p>
+        <div class="footer-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Serviço</a>
+          <a href="#">Ajuda</a>
+          <a href="#">Contato</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

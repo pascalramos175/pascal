@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pascal</title>
+  <style>
+
+    .text-container {
+  background: var(--laranja);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+.text-container textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  overflow: hidden;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--preto);
+  color: var(--branco);
+  box-sizing: border-box;
+}
+    /* Variáveis de cores */
+    :root {
+      --laranja: #3b3835;
+      --preto: #1e1e1e;
+      --branco: #fff;
+      --cinza: #333;
+      --destaque: #3f3832;
+      --transparente: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Corpo */
+    body {
+      background-color: var(--preto);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--branco);
+    }
+
+    /* Cabeçalho */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--laranja);
+      color: var(--branco);
+      z-index: 1000;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    header:hover {
+      background-color: var(--destaque);
+    }
+
+    header .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: var(--branco);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    header nav a:hover {
+      color: var(--cinza);
+    }
+
+    .banner {
+      background-image: url('https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt58a9d019cfd0c1c6/6606e6e296e41e1a8b2e8fa2/LOL_Highlight.png');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    }
+
+    .games-section {
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .game-card {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .game-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+  const textarea = document.getElementById("autoResize");
+  textarea.addEventListener("input", () => {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  });
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Pascal</div>
+    <nav>
+      <a href="#">Novidades</a>
+      <a href="#">Populares</a>
+      <a href="#">Videos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Livros</a>
+      <a href="#">Animes</a>
+    </nav>
+    
+  </header>
+
+  <section class="banner">
+    <h1>Bem-vindo ao Universo dos Espiritos Adormecidos</h1>
+  </section>
+
+  <section class="text-container">
+    <div class="text-container textarea">
+    <h2>"Para você que não sabe o que é Espirito Adormecido. É um RPG Fundado por Pascal Ramos(o mesmo fundado dessa web), onde o principal tema desse RPG é Bleach"</h2>
+  </div>
+</section>
+
+  <section class="games-section">
+    <div class="game-card">
+      <img src="https://images-ext-1.discordapp.net/external/HTZ2XHSgDmWaYgqY5XyuZWpXOUwNAqIb8ewNPtUNi0A/%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D099e8e495dfb7941073f36608e443444a0dd0a75/https/preview.redd.it/5-war-threats-v0-2dk7lezbc4h81.jpg?format=webp" alt="Potenciais de Guerra">
+      <h2>Potenciais de Guerra</h2>
+    </div>
+    <div class="game-card">
+      <img src="https://pm1.aminoapps.com/6727/1a924ac307c47f212aa9c226c10b02508607dd13v2_hq.jpg" alt="Clas">
+      <h2>Clãs</h2>
+    </div>
+    <div class="game-card">
+      <img src="https://wow.zamimg.com/uploads/screenshots/normal/1009210-ardena.jpg" alt="Começo">
+      <h2>Começo</h2>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Pascal. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Serviço</a>
+        <a href="#">Ajuda</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
